@@ -24,7 +24,7 @@ app.use(express.json());
 
 // Configurar CORS
 app.use(cors({
-    origin: 'http://localhost:3000' // Puedes agregar más orígenes si es necesario
+    origin: '*' // Puedes agregar más orígenes si es necesario
 }));
 
 // Rutas
