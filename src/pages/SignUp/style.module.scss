@@ -1,0 +1,14 @@
+.header {
+    max-width: 300px;
+    text-align: center;
+    line-height: 1.2;
+    margin: 0 auto;
+}
+
+.checkbox {
+    margin: 16px 0 0 16px;
+
+    label {
+        color: var(--text);
+    }
+}

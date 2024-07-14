@@ -1,0 +1,48 @@
+.admin-page {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            font-size: 16px;
+        }
+    }
+
+    .content {
+        display: flex;
+
+        .user-list {
+            width: 30%;
+            margin-right: 20px;
+        }
+
+        .user-detail {
+            width: 70%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+            .no-user-selected {
+                text-align: center;
+                color: #888;
+            }
+        }
+    }
+}

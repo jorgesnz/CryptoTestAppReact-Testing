@@ -1,0 +1,60 @@
+.add-deposit-container {
+    padding: 20px;
+  
+    h1 {
+      margin-bottom: 20px;
+    }
+  
+    p {
+      margin-bottom: 10px;
+    }
+  
+    select {
+      display: block;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    input {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .buttons {
+      display: flex;
+      gap: 10px;
+  
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+  
+        &.confirm {
+          background-color: #007bff;
+          color: white;
+        }
+  
+        &.confirm:hover {
+          background-color: #0056b3;
+        }
+  
+        &.back {
+          background-color: #6c757d;
+          color: white;
+        }
+  
+        &.back:hover {
+          background-color: #5a6268;
+        }
+      }
+    }
+  }
+  

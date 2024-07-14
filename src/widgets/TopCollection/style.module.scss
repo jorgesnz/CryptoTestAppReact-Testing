@@ -1,0 +1,36 @@
+.cover {
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+
+    &_avatar {
+        margin: -25px 0 2px 16px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.placeholder {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.label {
+    color: var(--border-light);
+
+    @media screen and (min-width: 375px) {
+        max-width: 64px;
+    }
+}
+
+.content {
+    padding: 0 16px 16px;
+}
+
+.header_wrapper {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

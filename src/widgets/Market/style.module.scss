@@ -1,0 +1,22 @@
+.sorting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &_wrapper {
+        width: 120px;
+
+        @media screen and (min-width: 414px) {
+            width: 170px;
+        }
+    }
+}
+
+.message {
+    height: 850px;
+    background: var(--widget);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

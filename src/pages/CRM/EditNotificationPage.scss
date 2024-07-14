@@ -1,0 +1,68 @@
+.edit-notification-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  input[type="text"],
+  textarea,
+  input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: rgb(79, 79, 79);
+  }
+
+  textarea {
+    resize: vertical;
+    height: 100px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:first-child {
+        background-color: #007bff;
+        color: white;
+      }
+
+      &:first-child:hover {
+        background-color: #0056b3;
+      }
+
+      &.back-button {
+        background-color: #6c757d;
+        color: white;
+      }
+
+      &.back-button:hover {
+        background-color: #5a6268;
+      }
+    }
+  }
+}

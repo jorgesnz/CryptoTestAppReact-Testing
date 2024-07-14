@@ -1,0 +1,51 @@
+.container {
+    display: grid;
+    min-height: 100vh;
+}
+
+.main {
+    max-width: 360px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--widget-dark) url('../../assets/slides/slide-bg.svg') no-repeat center center / cover;
+    text-align: center;
+
+    &_img {
+        width: auto;
+        height: 360px;
+    }
+
+    &_title, &_text {
+        color: #fff;
+        margin: 0 auto;
+    }
+
+    &_title {
+        font-size: 32px;
+        max-width: 560px;
+        line-height: 1.2;
+    }
+
+    &_text {
+        max-width: 375px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.7;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

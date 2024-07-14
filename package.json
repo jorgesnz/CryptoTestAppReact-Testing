@@ -1,0 +1,96 @@
+{
+  "name": "incrypto",
+  "version": "1.0.2",
+  "private": true,
+  "author": "merkulove <hello@merkulov.design> (https://1.envato.market/tf-merkulove)",
+  "contributors": [
+    {
+      "name": "Lilit L.",
+      "email": "lilit@merkulov.design"
+    }
+  ],
+  "copyright": "Merkulove ( https://merkulov.design/ ). All rights reserved.",
+  "support": "help@merkulov.design",
+  "license": "Envato License https://1.envato.market/KYbje",
+  "dependencies": {
+    "17": "^0.0.0",
+    "@emotion/styled": "^11.10.5",
+    "@loadable/component": "^5.15.3",
+    "@mui/base": "^5.0.0-beta.2",
+    "@mui/material": "^5.11.4",
+    "@mui/styled-engine-sc": "^5.11.0",
+    "@react-spring/web": "^9.6.1",
+    "@reduxjs/toolkit": "^1.9.1",
+    "ajv": "^8.16.0",
+    "ajv-keywords": "^5.1.0",
+    "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
+    "classnames": "^2.3.2",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "craco": "^0.0.3",
+    "dayjs": "^1.11.7",
+    "express": "^4.17.1",
+    "express-validator": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.5",
+    "path-browserify": "^1.0.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-ga4": "^2.0.0",
+    "react-grid-layout": "^1.3.4",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^5.2.1",
+    "react-intersection-observer": "^9.4.3",
+    "react-lazy-load-image-component": "^1.5.6",
+    "react-number-format": "^5.1.3",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.6.2",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.7.0",
+    "react-sizeme": "^3.0.2",
+    "react-toastify": "^9.1.1",
+    "react-truncate": "^2.4.0",
+    "react-use": "^17.4.0",
+    "react-use-measure": "^2.1.1",
+    "recharts": "^2.4.3",
+    "sass": "^1.57.1",
+    "styled-components": "^5.3.6",
+    "styled-theming": "^2.2.0",
+    "swiper": "^8.4.6",
+    "yarn": "^1.22.22"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "gzip": "craco build && compress-cra",
+    "eject": "react-scripts eject",
+    "server": "node server/server.js",
+    "build:lambda": "netlify-lambda build functions"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "compress-create-react-app": "^1.3.1",
+    "eslint-webpack-plugin": "^4.2.0",
+    "netlify-lambda": "^2.0.15"
+  }
+} 

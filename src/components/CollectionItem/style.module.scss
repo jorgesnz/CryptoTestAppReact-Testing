@@ -1,0 +1,55 @@
+.wrapper {
+    overflow: hidden;
+    cursor: pointer;
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    backface-visibility: hidden;
+    isolation: isolate;
+    transform: translateZ(0);
+
+    &:hover {
+        .media_wrapper {
+            transform: scale(1.1);
+        }
+    }
+
+    &.w160 {
+        min-width: 160px;
+    }
+}
+
+.media {
+    background-color: var(--border);
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    isolation: isolate;
+    aspect-ratio: 172 / 120;
+
+    &_wrapper {
+        will-change: transform;
+        transition: transform var(--transition);
+    }
+
+    &_wrapper,
+    &_img, &_img img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.main {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    margin-top: -16px;
+
+    &_text {
+        max-width: 140px;
+        font-size: 0.625rem;
+    }
+}

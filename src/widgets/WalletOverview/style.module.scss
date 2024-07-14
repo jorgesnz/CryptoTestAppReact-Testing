@@ -1,0 +1,29 @@
+.total {
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 0 22px 0 16px;
+    height: 120px;
+
+    &_media, &_main {
+        position: relative;
+        z-index: 2;
+    }
+
+    &_media {
+        display: none;
+
+        @media screen and (min-width: 375px) {
+            display: block;
+            max-width: 117px;
+            margin-top: -6px;
+        }
+    }
+
+    &_main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+}

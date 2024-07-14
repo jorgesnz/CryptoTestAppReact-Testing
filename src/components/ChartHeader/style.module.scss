@@ -1,0 +1,94 @@
+.wrapper {
+    margin: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.table {
+    font-size: 0.625rem;
+
+    &_property {
+        width: 55px;
+    }
+
+    &_value {
+        text-align: right;
+    }
+}
+
+.button {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    transition: color var(--transition);
+
+    &:hover {
+        color: var(--header);
+    }
+
+    &_icon {
+        transition: opacity var(--transition);
+        opacity: 0;
+    }
+
+    &_active {
+        opacity: 1;
+    }
+
+    &_candle {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.list {
+    display: flex;
+    gap: 16px;
+}
+
+@media screen and (min-width: 375px) {
+    .list {
+        gap: 10px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .icon {
+        display: block;
+    }
+
+    .list {
+        gap: 16px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .list {
+        gap: 10px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .list {
+        gap: 16px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .icon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .icon {
+        display: block;
+    }
+
+    .list {
+        flex: unset;
+    }
+}

@@ -1,0 +1,53 @@
+// global template styles
+
+html {
+    user-select: none;
+    font-size: calc(100% * var(--font-scale));
+
+    &.no-transition * {
+        transition: none !important;
+    }
+
+    &.no-scroll {
+        overflow: hidden;
+    }
+}
+
+body,
+.body-bg {
+    background: var(--body);
+    color: var(--text);
+}
+
+.layout {
+    margin: -8px 0 calc(var(--bottom-nav-height) + 16px - 40px);
+}
+
+.Toastify__toast-container {
+    padding: 20px !important;
+}
+
+// --- media queries ---
+
+@media screen and (min-width: 768px) {
+    .layout {
+        margin: 0 4px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .layout {
+        margin: 0 46px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .app {
+        display: grid;
+        grid-template-columns: 310px minmax(0, calc(100% - 310px));
+
+        &_container {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+    }
+}

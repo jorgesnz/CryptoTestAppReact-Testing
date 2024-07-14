@@ -1,0 +1,23 @@
+.main {
+    display: grid;
+    grid-template-columns: minmax(0, 140px) minmax(0, calc(100% - 140px));
+    gap: 16px;
+    align-items: flex-start;
+
+    &_details {
+        margin-top: 8px;
+
+        .title {
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.property {
+    width: 140px;
+}
+
+.value {
+    max-width: calc(100% - 140px);
+    font-weight: 600;
+}

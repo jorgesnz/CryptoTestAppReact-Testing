@@ -1,0 +1,32 @@
+.user-list {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+
+    .user-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+
+        &:hover {
+            background: #f9f9f9;
+        }
+
+        .user-info {
+            .user-name {
+                font-size: 18px;
+                color: #000000;
+                font-weight: bold;
+            }
+
+            .user-email {
+                font-size: 14px;
+                color: #000000;
+            }
+        }
+    }
+}

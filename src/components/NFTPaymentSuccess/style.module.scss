@@ -1,0 +1,28 @@
+.container {
+    padding: 32px 16px;
+    text-align: center;
+}
+
+.media {
+    height: 170px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 16px 0;
+
+    img {
+        height: 100%;
+    }
+}
+
+.main {
+    margin-bottom: 24px;
+    text-align: left;
+
+    &_details {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+        gap: 4px;
+        margin: 8px 0 16px;
+    }
+}

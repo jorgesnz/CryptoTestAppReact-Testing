@@ -1,0 +1,22 @@
+.container {
+    gap: 40px;
+
+    &.col2 {
+        @media screen and (min-width: 768px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: flex-end;
+            gap: 50px;
+        }
+    }
+}
+
+.qr {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    &_code {
+        max-width: 260px;
+        margin: 0 auto;
+    }
+}

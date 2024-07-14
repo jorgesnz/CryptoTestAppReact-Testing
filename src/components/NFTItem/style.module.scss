@@ -1,0 +1,33 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &_media {
+        border-radius: 12px;
+        overflow: hidden;
+        height: 200px;
+        background: var(--border);
+
+        .img, .img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        &.compact {
+            aspect-ratio: unset;
+        }
+
+        @media screen and (min-width: 414px) {
+            height: 280px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            height: 300px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            height: 280px;
+        }
+    }
+}

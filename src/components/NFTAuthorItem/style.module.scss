@@ -1,0 +1,14 @@
+.media {
+    aspect-ratio: 140/128;
+    background: var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    isolation: isolate;
+    transform: translateZ(0);
+
+    &_img, &_img img {
+        width: 100%;
+        height: 100%;
+    }
+}

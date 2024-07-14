@@ -1,0 +1,32 @@
+.header {
+    max-width: 300px;
+    text-align: center;
+    margin: 0 auto;
+
+    h1 {
+        line-height: 1.2;
+    }
+
+    &_logo {
+        width: 88px;
+        height: 88px;
+    }
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    color: var(--header);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    gap: 8px;
+    height: var(--element-height);
+    border-radius: 12px;
+    padding: 0 16px;
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+}

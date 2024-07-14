@@ -1,0 +1,21 @@
+.container {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 8px;
+}
+
+.reset {
+    cursor: pointer;
+    transition: all var(--transition);
+    opacity: 0;
+
+    &.active {
+        opacity: 1;
+
+        &:hover {
+            color: var(--red);
+        }
+    }
+}

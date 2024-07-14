@@ -1,0 +1,27 @@
+.container {
+    padding: 32px 16px;
+    text-align: center;
+}
+
+.price {
+    margin: 4px 0 8px;
+}
+
+.message {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 12px;
+    margin: 16px 0 24px;
+
+    &.light {
+        background: #f7f7f7;
+    }
+
+    &.dark {
+        background: var(--header-light);
+    }
+}

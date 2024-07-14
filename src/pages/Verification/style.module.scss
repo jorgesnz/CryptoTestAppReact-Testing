@@ -1,0 +1,14 @@
+.header {
+    text-align: center;
+
+    &_text {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+.button {
+    font-weight: 600;
+    color: var(--header);
+    margin-left: 8px;
+}

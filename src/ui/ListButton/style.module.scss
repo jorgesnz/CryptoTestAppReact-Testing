@@ -1,0 +1,36 @@
+.button {
+    height: 32px;
+    background: var(--header-light);
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: all var(--transition);
+    position: relative;
+
+    &.accent {
+        background: var(--accent);
+        color: var(--header-light);
+    }
+
+    &:hover, &:focus,
+    &.active {
+        background: var(--widget);
+        border-color: var(--accent);
+        color: var(--header);
+    }
+
+    &_text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity var(--transition);
+        opacity: 0;
+        width: 100%;
+
+        &.active {
+            opacity: 1;
+        }
+    }
+}
