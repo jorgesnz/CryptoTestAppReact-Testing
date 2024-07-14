@@ -23,7 +23,7 @@ const SignUp = () => {
 
     const handleSignUp = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/users', {
+            const response = await axios.post('https://cryptotestapp4.netlify.app/api/users', {
                 email,
                 password,
                 firstName,
