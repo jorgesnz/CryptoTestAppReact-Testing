@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from '../../utils/axiosConfig'; // Importa la configuración de Axios
+import axios from '../../utils/axiosConfig';
 import './EditNotificationPage.scss';
 
 const EditNotificationPage = () => {
@@ -9,7 +9,7 @@ const EditNotificationPage = () => {
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
   const [read, setRead] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Estado para manejar la carga de datos
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,15 +17,15 @@ const EditNotificationPage = () => {
       try {
         const response = await axios.get(`/api/notifications/notification/${id}`);
         const notification = response.data;
-        console.log('Fetched notification:', notification); // Agregar este log para depurar
+        console.log('Fetched notification:', notification);
         setTitle(notification.title || '');
         setText(notification.text || '');
         setDate(notification.date ? new Date(notification.date).toISOString().slice(0, 16) : '');
         setRead(notification.read || false);
-        setIsLoading(false); // Datos cargados correctamente
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching notification details:', error);
-        setIsLoading(false); // Manejar el error
+        setIsLoading(false);
       }
     };
 
@@ -40,16 +40,16 @@ const EditNotificationPage = () => {
         date,
         read
       });
-      alert('Notification updated successfully');
-      navigate(-1); // Go back to the previous page
+      alert('Notificación actualizada con éxito');
+      navigate(-1);
     } catch (error) {
       console.error('Error updating notification', error);
-      alert('Failed to update notification');
+      alert('Error al actualizar la notificación');
     }
   };
 
   if (isLoading) {
-    return <div>Cargando...</div>; // Mostrar un mensaje de carga mientras se obtienen los datos
+    return <div className="loading-spinner">Cargando...</div>;
   }
 
   return (
@@ -59,9 +59,10 @@ const EditNotificationPage = () => {
         type="text"
         id="title"
         name="title"
-        placeholder="Titulo"
+        placeholder="Título"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        className="input-field"
       />
       <textarea
         id="text"
@@ -69,6 +70,7 @@ const EditNotificationPage = () => {
         placeholder="Texto"
         value={text}
         onChange={(e) => setText(e.target.value)}
+        className="input-field"
       />
       <input
         type="datetime-local"
@@ -76,6 +78,7 @@ const EditNotificationPage = () => {
         name="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
+        className="input-field"
       />
       <label htmlFor="read">
         <input
@@ -88,7 +91,7 @@ const EditNotificationPage = () => {
         Marcar como leída
       </label>
       <div className="buttons">
-        <button onClick={handleUpdateNotification}>Actualizar Notificación</button>
+        <button className="update-button" onClick={handleUpdateNotification}>Actualizar Notificación</button>
         <button className="back-button" onClick={() => navigate(-1)}>Volver</button>
       </div>
     </div>
@@ -96,3 +99,6 @@ const EditNotificationPage = () => {
 };
 
 export default EditNotificationPage;
+
+
+

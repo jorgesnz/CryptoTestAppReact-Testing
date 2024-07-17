@@ -21,7 +21,7 @@ const Profile = ({ author }) => {
     const [ref, { height }] = useMeasure();
 
     if (!author) {
-        return <div>Loading...</div>;
+        return <div>Cargando...</div>;
     }
 
     return (

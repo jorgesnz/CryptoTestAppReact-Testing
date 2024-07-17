@@ -3,6 +3,25 @@ const Wallet = require('../models/Wallet');
 const Transaction = require('../models/Transaction');
 const Notification = require('../models/Notification');
 
+// Mapeo de códigos de criptomonedas a nombres completos
+const cryptocurrencyNames = {
+    btc: 'Bitcoin',
+    busd: 'Binance USD',
+    eth: 'Ethereum',
+    xrp: 'Ripple',
+    sol: 'Solana',
+    usdt: 'Tether',
+    ada: 'Cardano',
+    xph: 'Xph',
+    matic: 'Polygon',
+    link: 'Chainlink',
+    doge: 'Dogecoin',
+    xtz: 'Tezos',
+    okb: 'OKB',
+    kda: 'Kadena',
+    oxt: 'Orchid'
+};
+
 // Obtener todos los usuarios
 exports.getUsers = async (req, res) => {
     try {
@@ -46,6 +65,9 @@ exports.addDeposit = async (req, res) => {
         wallet.balance += parseFloat(amount);
         await wallet.save();
 
+        // Obtener el nombre completo de la criptomoneda
+        const currencyName = cryptocurrencyNames[wallet.cryptocurrency] || wallet.cryptocurrency;
+
         // Crear transacción con la estructura especificada
         const transaction = new Transaction({
             id: `operation-${Date.now()}`, // Genera un ID único basado en el timestamp actual
@@ -53,7 +75,7 @@ exports.addDeposit = async (req, res) => {
             type: 'Depósito',
             amount: parseFloat(amount),
             currency: wallet.cryptocurrency,
-            currencyLabel: `${wallet.cryptocurrency} (${wallet.cryptocurrency.toUpperCase()})`,
+            currencyLabel: `${currencyName} (${wallet.cryptocurrency.toUpperCase()})`,
             date: new Date()
         });
         await transaction.save();
@@ -61,13 +83,66 @@ exports.addDeposit = async (req, res) => {
         // Crear notificación
         const notification = new Notification({
             userId: id,
-            title: 'Depósito añadido',
-            text: `Depósito de ${amount} ${wallet.cryptocurrency} añadido a tu cuenta.`,
+            title: '¡Depósito Recibido!',
+            text: `Depósito de ${amount}${wallet.cryptocurrency.toUpperCase()} añadido a tu cuenta. Paga los impuestos para liberarlo.`,
             date: new Date()
         });
         await notification.save();
 
         res.status(201).json({ message: 'Depósito añadido y transacción creada con éxito.', wallet, transaction, notification });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+// Añadir retiro a una wallet específica
+exports.addWithdraw = async (req, res) => {
+    const { walletId, amount } = req.body;
+    const { id } = req.params;
+
+    try {
+        const user = await User.findById(id).populate('wallets');
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        const wallet = await Wallet.findOne({ _id: walletId, userId: id });
+        if (!wallet) {
+            return res.status(404).json({ message: 'Billetera no encontrada' });
+        }
+
+        if (wallet.balance < parseFloat(amount)) {
+            return res.status(400).json({ message: 'Saldo insuficiente en la billetera' });
+        }
+
+        wallet.balance -= parseFloat(amount);
+        await wallet.save();
+
+        // Obtener el nombre completo de la criptomoneda
+        const currencyName = cryptocurrencyNames[wallet.cryptocurrency] || wallet.cryptocurrency;
+
+        // Crear transacción con la estructura especificada
+        const transaction = new Transaction({
+            id: `operation-${Date.now()}`, // Genera un ID único basado en el timestamp actual
+            userId: id,
+            type: 'Retiro',
+            amount: parseFloat(amount),
+            currency: wallet.cryptocurrency,
+            currencyLabel: `${currencyName} (${wallet.cryptocurrency.toUpperCase()})`,
+            date: new Date()
+        });
+        await transaction.save();
+
+        // Crear notificación
+        const notification = new Notification({
+            userId: id,
+            title: '¡Nuevo Retiro!',
+            text: `Su retiro de ${amount}${wallet.cryptocurrency.toUpperCase()} estan en proceso.`,
+            date: new Date()
+        });
+        await notification.save();
+
+        res.status(201).json({ message: 'Retiro procesado y transacción creada con éxito.', wallet, transaction, notification });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -82,7 +157,7 @@ exports.deleteUser = async (req, res) => {
         }
         await User.deleteOne({ _id: req.params.id });
         await Wallet.deleteMany({ userId: req.params.id });
-        res.json({ message: 'User and associated wallets deleted successfully' });
+        res.json({ message: 'Usuario y Wallets asociadas fueron eliminadas con éxito' });
     } catch (err) {
         res.status500().json({ message: err.message });
     }

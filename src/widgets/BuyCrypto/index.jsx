@@ -54,9 +54,9 @@ const BuyCrypto = ({variant}) => {
                         <div className={styles.chart} style={{height: chartHeight}}>
                             {
                                 selectedChart === 'mixed' ?
-                                    <MixedChart period={selectedPeriod} withButtons={variant === 'overview'}/>
-                                    :
                                     <LineChart period={selectedPeriod} withButtons={variant === 'overview'}/>
+                                    :
+                                    <MixedChart period={selectedPeriod} withButtons={variant === 'overview'}/>
                             }
                         </div>
                         <Suspense fallback={<div className="suspense-text">Cargando...</div>}>

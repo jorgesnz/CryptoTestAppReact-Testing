@@ -1,68 +1,115 @@
 .edit-notification-container {
-  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px;
-  margin: 0 auto;
+  margin: 40px auto;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  animation: fadeIn 1s ease-in-out;
 
   h1 {
-    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
     text-align: center;
+    margin-bottom: 30px;
+    animation: slideIn 0.5s ease-in-out;
   }
 
-  input[type="text"],
-  textarea,
-  input[type="datetime-local"] {
+  .input-field {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: rgb(79, 79, 79);
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
   }
 
-  textarea {
-    resize: vertical;
-    height: 100px;
+  textarea.input-field {
+    height: 150px;
+    resize: none;
   }
 
   label {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    color: #555;
+    animation: fadeIn 1.2s ease-in-out;
 
     input[type="checkbox"] {
       margin-right: 10px;
+      transform: scale(1.5);
     }
   }
 
   .buttons {
     display: flex;
     justify-content: space-between;
+    animation: fadeIn 1.4s ease-in-out;
 
     button {
-      padding: 10px 20px;
+      padding: 12px 25px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
+      font-size: 1rem;
       cursor: pointer;
-      font-size: 16px;
+      transition: background-color 0.3s, transform 0.3s;
 
-      &:first-child {
-        background-color: #007bff;
-        color: white;
-      }
+      &.update-button {
+        background-color: #28a745;
+        color: #fff;
 
-      &:first-child:hover {
-        background-color: #0056b3;
+        &:hover {
+          background-color: #218838;
+          transform: translateY(-2px);
+        }
       }
 
       &.back-button {
         background-color: #6c757d;
-        color: white;
-      }
+        color: #fff;
 
-      &.back-button:hover {
-        background-color: #5a6268;
+        &:hover {
+          background-color: #5a6268;
+          transform: translateY(-2px);
+        }
       }
     }
+  }
+
+  .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: #007bff;
+    text-align: center;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

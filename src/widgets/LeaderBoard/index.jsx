@@ -22,9 +22,9 @@ const LeaderBoard = () => {
     const data = [
         {name: 'AntonioFX', increase: 28.3},
         {name: 'Codecrypto', increase: 24.6},
-        {name: 'Merkulove', increase: 64.6},
+        {name: 'LuisFx33', increase: 64.6},
         {name: 'CrTrader', increase: 35.9},
-        {name: 'Singh', increase: 28.8},
+        {name: 'Singhtrader', increase: 28.8},
         {name: 'Bitcoinbutler', increase: 23.3},
         {name: 'Coinunlike', increase: 19.6},
         {name: 'Coinfizzle', increase: 14.3},

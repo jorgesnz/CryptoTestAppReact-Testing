@@ -20,7 +20,7 @@ const UserDetailPage = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
-    axios.get(`http://localhost:5000/api/userdata/UserRole/${userId}/verify-role`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/userdata/UserRole/${userId}/verify-role`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(response => {
         setUserRole(response.data.role);
         setLoading(false);
@@ -32,15 +32,15 @@ const UserDetailPage = () => {
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/crm/user/${id}`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/crm/user/${id}`)
       .then(response => setUser(response.data))
       .catch(error => console.error('Error fetching user details:', error));
 
-    axios.get(`http://localhost:5000/api/notifications/user/${id}`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/notifications/user/${id}`)
       .then(response => setNotifications(response.data))
       .catch(error => console.error('Error fetching notifications:', error));
 
-    axios.get(`http://localhost:5000/api/transactions/${id}`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/transactions/${id}`)
       .then(response => setTransactions(response.data))
       .catch(error => console.error('Error fetching transactions:', error));
   }, [id]);
@@ -49,7 +49,7 @@ const UserDetailPage = () => {
     const confirmDelete = window.confirm('¿Estas seguro que quieres eliminar esta cuenta?');
     if (confirmDelete) {
       try {
-        await axios.delete(`http://localhost:5000/api/crm/user/${id}`);
+        await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/crm/user/${id}`);
         alert('Cuenta borrada con éxito');
         navigate('/crm');
       } catch (error) {
@@ -61,7 +61,7 @@ const UserDetailPage = () => {
 
   const handleDeleteTransaction = async (transactionId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/transactions/${transactionId}`);
+      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/transactions/${transactionId}`);
       setTransactions(transactions.filter(transaction => transaction._id !== transactionId));
       setShowModal(false);
     } catch (error) {
@@ -91,7 +91,7 @@ const UserDetailPage = () => {
 
   const handleRoleChange = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/user/role/${id}`, { role: newRole }, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
+      await axios.put(`${process.env.REACT_APP_SERVER_URL}/api/user/role/${id}`, { role: newRole }, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
       setUser({ ...user, role: newRole });
       closeRoleModal();
       alert('Rol cambiado con exito');
@@ -101,13 +101,13 @@ const UserDetailPage = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
 
   if (userRole !== 'agent' && userRole !== 'admin') {
     return <AccessDenied />;
   }
 
-  if (!user) return <div>Loading user details...</div>;
+  if (!user) return <div>Cargando detalles del usuario...</div>;
 
   return (
     <div className="user-detail-container">
@@ -115,12 +115,14 @@ const UserDetailPage = () => {
       <p>Email: {user.email}</p>
       <div className="buttons">
         <button className="btn add-deposit" onClick={() => navigate(`/crm/user/${id}/add-deposit`)}>Añadir Depósito</button>
+        <button className="btn withdraw" onClick={() => navigate(`/crm/user/${id}/withdraw`)}>Realizar Retiro</button>
         <button className="btn create-notification" onClick={() => navigate(`/crm/user/${id}/create-notification`)}>Crear Notificación</button>
+        <button className="btn create-transaction-info" onClick={() => navigate(`/crm/user/${id}/create-transaction-info`)}>Crear Información de Transacción</button>
         <button className="btn delete-account" onClick={handleDeleteAccount}>Borrar Cuenta</button>
         {userRole === 'admin' && (
           <button className="btn change-role" onClick={openRoleModal}>Cambiar Rol</button>
         )}
-        <button className="btn back" onClick={() => navigate(-1)}>Volver</button>
+        <button className="btn back" onClick={() => navigate('/crm')}>Volver</button> 
       </div>
       <h2>Wallets</h2>
       <ul className="wallets-list">
@@ -135,7 +137,7 @@ const UserDetailPage = () => {
         {notifications.map(notification => (
           <li key={notification._id} className={`notification-item ${notification.read ? 'read' : 'unread'}`}>
             <div className="notification-content" onClick={() => navigate(`/crm/notification/${notification._id}/edit`)}>
-              <h3>{notification.title}</h3>
+              <h3><span className="notif-title">{notification.title}</span></h3>
               <p>{notification.text}</p>
               <p><small>{new Date(notification.date).toLocaleString()}</small></p>
             </div>

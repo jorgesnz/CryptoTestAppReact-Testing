@@ -26,7 +26,7 @@ const WalletOverview = ({ userData, tradingData, wallets, withTitle = true }) =>
     const [ref, { height }] = useMeasure();
     const [totalCurrency, setTotalCurrency] = useState(CURRENCIES[0]);
     const [totalBalance, setTotalBalance] = useState(0);
-    const [totalBalanceInEuros, setTotalBalanceInEuros] = useState(0);
+    const [tradingBalance, setTradingBalance] = useState(0); // Estado para el balance de trading
 
     useEffect(() => {
         if (userData && tradingData && wallets) {
@@ -47,12 +47,7 @@ const WalletOverview = ({ userData, tradingData, wallets, withTitle = true }) =>
                 totalInSelectedCurrency += tradingBalanceInSelectedCurrency;
 
                 setTotalBalance(totalInSelectedCurrency.toFixed(2));
-
-                // Convertir el total en la divisa seleccionada a euros
-                const exchangeRateToEuro = getCurrencyExchangeRate('eur', totalCurrency.value);
-                const totalInEuros = totalInSelectedCurrency * exchangeRateToEuro;
-
-                setTotalBalanceInEuros(totalInEuros.toFixed(2));
+                setTradingBalance(tradingData.balance.toFixed(2)); // Actualiza el estado del balance de trading
             };
 
             calculateTotalBalance();
@@ -100,7 +95,7 @@ const WalletOverview = ({ userData, tradingData, wallets, withTitle = true }) =>
                             />
                         </div>
                         <span className="text-600 text-dark lh-1">
-                            <span className="text-14 text-white lh-1">{totalBalanceInEuros}</span> EUR
+                            <span className="text-14 text-white lh-1">{tradingBalance}</span> {tradingData.currency.toUpperCase()}
                         </span>
                     </div>
                     <LazyImage className={styles.total_media} effect="opacity" src={wallet} alt="Mis Activos" />

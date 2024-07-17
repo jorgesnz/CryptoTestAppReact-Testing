@@ -1,60 +1,77 @@
 .add-deposit-container {
-    padding: 20px;
-  
-    h1 {
-      margin-bottom: 20px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: 'Roboto', sans-serif;
+
+  h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #555;
+  }
+
+  select, input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    color: black;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
     }
-  
-    p {
-      margin-bottom: 10px;
-    }
-  
-    select {
-      display: block;
-      margin-bottom: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-  
-    input {
-      display: block;
-      width: 100%;
-      max-width: 200px;
-      margin-bottom: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-  
-    .buttons {
-      display: flex;
-      gap: 10px;
-  
-      button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-  
-        &.confirm {
-          background-color: #007bff;
-          color: white;
-        }
-  
-        &.confirm:hover {
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+
+      &.confirm {
+        background-color: #007bff;
+        color: #fff;
+
+        &:hover {
           background-color: #0056b3;
+          transform: translateY(-2px);
         }
-  
-        &.back {
-          background-color: #6c757d;
-          color: white;
-        }
-  
-        &.back:hover {
+      }
+
+      &.back {
+        background-color: #6c757d;
+        color: #fff;
+
+        &:hover {
           background-color: #5a6268;
+          transform: translateY(-2px);
         }
       }
     }
   }
-  
+
+  .loading {
+    font-size: 1.5rem;
+    color: #666;
+    text-align: center;
+  }
+}

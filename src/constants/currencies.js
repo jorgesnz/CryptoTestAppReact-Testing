@@ -20,7 +20,7 @@ import pound from '@assets/icons/pound.svg';
 const CURRENCIES = [
     { value: 'usd', label: 'USD', icon: dollar, rate: 1 },
     { value: 'eur', label: 'EUR', icon: euro, rate: 0.85 },
-    { value: 'gbp', label: 'GBP', icon: pound, rate: 0.75 },
+    { value: 'gbp', label: 'GBP', icon: pound, rate: 1.55 },
     { value: 'aud', label: 'AUD', icon: dollar, rate: 1.3 },
     { value: 'cad', label: 'CAD', icon: dollar, rate: 1.25 },
 ];
@@ -148,23 +148,6 @@ const CRYPTO_CURRENCIES = [
         isTrending: true,
     },
     {
-        value: 'Bitcoin',
-        label: 'BTC',
-        name: 'Bitcoin',
-        icon: btc,
-        usd: 56548.78,
-        exchange: {
-            usd: 56548.78,
-            eur: 54433.99,
-            gbp: 44903.59,
-            aud: 30374.620,
-            cad: 28304.48,
-        },
-        change: 2.68,
-        isFavorite: true,
-        isTrending: false,
-    },
-    {
         value: 'link',
         label: 'LINK',
         name: '1Chainlink',
@@ -176,19 +159,6 @@ const CRYPTO_CURRENCIES = [
         change: -6.11,
         isFavorite: true,
         isTrending: true,
-    },
-    {
-        value: 'Ethereum',
-        label: 'ETH',
-        name: 'Ethereum',
-        icon: eth,
-        usd: 1565.71,
-        exchange: {
-            usd: 1565.71,
-        },
-        change: -4.03,
-        isFavorite: false,
-        isTrending: false,
     },
     {
         value: 'doge',
@@ -226,19 +196,6 @@ const CRYPTO_CURRENCIES = [
             usd: 3.99,
         },
         change: 0.25,
-        isFavorite: true,
-        isTrending: true,
-    },
-    {
-        value: 'Solana',
-        label: 'SOL',
-        name: 'Solana',
-        icon: sol,
-        usd: 23.17,
-        exchange: {
-            usd: 23.17,
-        },
-        change: -7.14,
         isFavorite: true,
         isTrending: true,
     },

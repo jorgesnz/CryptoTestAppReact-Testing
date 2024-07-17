@@ -35,7 +35,8 @@ const CRMPage = lazy(() => import('@pages/CRM/CRMPage'));
 const UserDetailPage = lazy(() => import('@pages/CRM/UserDetailPage'));
 const AddDepositPage = lazy(() => import('@pages/CRM/AddDepositPage'));
 const CreateNotificationPage = lazy(() => import('@pages/CRM/CreateNotificationPage'));
-
+const WithdrawPage = lazy(() => import('@pages/CRM/WithdrawPage')); 
+const CreateTransactionInfoPage = lazy(() => import('@pages/CRM/CreateTransactionInfoPage'));
 
 const App = () => {
     const appRef = useRef(null);
@@ -76,7 +77,8 @@ const App = () => {
                                 <Route path="/crm/user/:id/add-deposit" element={<AddDepositPage />} />
                                 <Route path="/crm/user/:id/create-notification" element={<CreateNotificationPage />} />
                                 <Route path="/crm/notification/:id/edit" element={<EditNotificationPage />} />
-                                <Route path="/crm/user/:id/add-deposit" element={<AddDepositPage />} />
+                                <Route path="/crm/user/:id/withdraw" element={<WithdrawPage />} />
+                                <Route path="/crm/user/:id/create-transaction-info" element={<CreateTransactionInfoPage />} />
                             </Routes>
                         </Suspense>
                     </div>

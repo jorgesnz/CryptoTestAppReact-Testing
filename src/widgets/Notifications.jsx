@@ -49,7 +49,7 @@ const Notifications = ({ userId, notifications = [], isSidebarWidget, onNotifica
 
     const handleNotificationClick = async (notification) => {
         if (!notification.read) {
-            await axios.put(`http://localhost:5000/api/notifications/notification/${notification._id}/read`);
+            await axios.put(`${process.env.REACT_APP_SERVER_URL}/api/notifications/notification/${notification._id}/read`);
             onNotificationClick(notification._id);
         }
     };
@@ -83,7 +83,7 @@ const Notifications = ({ userId, notifications = [], isSidebarWidget, onNotifica
                         <span className="text-light text-10 text-600">
                             {
                                 dayjs(item.date).isSame(dayjs(), 'day') ?
-                                    'Today'
+                                    'Hoy'
                                     :
                                     dayjs(item.timestamp).format('DD.MM.YY, HH:mm')
                             }

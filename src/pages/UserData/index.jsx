@@ -10,7 +10,7 @@ const UserData = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/userdata');
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/userdata`);
                 setUserData(response.data);
                 console.log('Fetched UserData:', response.data);
             } catch (error) {

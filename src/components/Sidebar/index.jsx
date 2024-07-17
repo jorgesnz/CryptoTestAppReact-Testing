@@ -42,7 +42,7 @@ const Sidebar = () => {
                     console.error('No userId found in localStorage');
                     return;
                 }
-                const response = await axios.get(`http://localhost:5000/api/notifications/user/${userId}`, {
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/notifications/user/${userId}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
@@ -64,7 +64,7 @@ const Sidebar = () => {
                     console.error('No userId found in localStorage');
                     return;
                 }
-                const response = await axios.get(`http://localhost:5000/api/userdata/current-user/${userId}`, {
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/userdata/current-user/${userId}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }

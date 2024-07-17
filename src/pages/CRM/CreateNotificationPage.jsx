@@ -13,18 +13,18 @@ const CreateNotificationPage = () => {
 
   const handleCreateNotification = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/notifications`, {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/notifications`, {
         userId: id,
         title,
         text,
         date,
         read
       });
-      alert('Notification created successfully');
+      alert('Notificación creada con éxito');
       navigate(`/crm/user/${id}`);
     } catch (error) {
       console.error('Error creating notification', error);
-      alert('Failed to create notification');
+      alert('Error al crear la notificación');
     }
   };
 
@@ -33,7 +33,7 @@ const CreateNotificationPage = () => {
       <h1>Crear Notificación</h1>
       <input
         type="text"
-        placeholder="Titulo"
+        placeholder="Título"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
@@ -56,7 +56,7 @@ const CreateNotificationPage = () => {
         Marcar como leída
       </label>
       <div className="buttons">
-        <button onClick={handleCreateNotification}>Crear Notificación</button>
+        <button className="create-button" onClick={handleCreateNotification}>Crear Notificación</button>
         <button className="back-button" onClick={() => navigate(-1)}>Volver</button>
       </div>
     </div>

@@ -40,11 +40,11 @@ const ChartHeader = ({ data, period, setPeriod, type, setType }) => {
             </div>
             <div className={styles.wrapper}>
                 <button className={styles.button}
-                        onClick={() => setType(type === 'mixed' ? 'line' : 'mixed')}
+                        onClick={() => setType(type === 'mixed' ? 'line' : 'line')}
                         aria-label="Cambiar tipo de gráfico">
                     <IconMixed
-                        className={`${styles.button_icon} ${styles.button_candle} ${type === 'mixed' ? styles.button_active : ''}`} />
-                    <IconGraph className={`${styles.button_icon} ${type === 'line' ? styles.button_active : ''}`} />
+                        className={`${styles.button_icon} ${type === 'line' ? styles.button_active : ''}`} />
+                    <IconGraph className={`${styles.button_icon} ${styles.button_candle} ${type === 'mixed' ? styles.button_active : ''}`} />
                 </button>
                 <div className={styles.list}>
                     <PeriodButton value="m15" text="15m" selected={period} onClick={setPeriod} />

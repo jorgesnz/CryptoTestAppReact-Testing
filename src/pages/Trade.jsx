@@ -22,7 +22,7 @@ const Trade = () => {
                     console.error('No userId found in localStorage');
                     return;
                 }
-                const response = await axios.get(`http://localhost:5000/api/userdata/dashboard/${userId}`);
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/userdata/dashboard/${userId}`);
                 setUserData(response.data.user);
                 setTradingData(response.data.tradingAccount);
                 setWallets(response.data.wallets);

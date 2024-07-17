@@ -15,7 +15,7 @@ const CRMPage = () => {
   useEffect(() => {
     const userId = localStorage.getItem('userId'); // Asumiendo que el ID del usuario está almacenado en localStorage
     // Fetch user role
-    axios.get(`http://localhost:5000/api/userdata/UserRole/${userId}/verify-role`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/userdata/UserRole/${userId}/verify-role`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       .then(response => {
         setUserRole(response.data.role);
         setLoading(false);
@@ -29,7 +29,7 @@ const CRMPage = () => {
   useEffect(() => {
     if (userRole === 'agent' || userRole === 'admin') {
       // Fetch users from the database
-      axios.get('http://localhost:5000/api/crm/users')
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/api/crm/users`)
         .then(response => setUsers(response.data))
         .catch(error => console.error('Error fetching users:', error));
     }
@@ -55,7 +55,7 @@ const CRMPage = () => {
     const confirmDelete = window.confirm('Estas seguro de eliminar los usuarios seleccionados?');
     if (confirmDelete) {
       try {
-        await Promise.all(selectedUsers.map(userId => axios.delete(`http://localhost:5000/api/crm/user/${userId}`)));
+        await Promise.all(selectedUsers.map(userId => axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/crm/user/${userId}`)));
         setUsers(users.filter(user => !selectedUsers.includes(user._id)));
         setSelectedUsers([]);
         alert('Usuarios seleccionados eliminados exitosamente');

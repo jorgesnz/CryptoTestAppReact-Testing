@@ -38,6 +38,7 @@
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s ease, transform 0.3s ease;
+      color: white;
 
       &.add-deposit {
         background-color: #28a745;
@@ -46,6 +47,16 @@
 
       &.add-deposit:hover {
         background-color: #218838;
+        transform: translateY(-2px);
+      }
+
+      &.withdraw {
+        background-color: #ff0000;
+        color: white;
+      }
+
+      &.withdraw:hover {
+        background-color: #db0000;
         transform: translateY(-2px);
       }
 
@@ -99,6 +110,11 @@
     padding: 0;
     list-style: none;
 
+    .notif-title {
+      color: #28a745;
+      font-size: 14px;
+    }
+
     li {
       position: relative;
       padding: 15px;
@@ -133,8 +149,9 @@
 
       strong {
         display: block;
+        font-size: 14px;
         margin-bottom: 5px;
-        color: #007bff;
+        color: #28a745;
       }
 
       p {
@@ -143,13 +160,15 @@
       }
 
       .wallet-cryptocurrency {
+        font-size: 14px;
         font-weight: bold;
         color: #28a745;
       }
 
       .wallet-balance {
         font-style: italic;
-        color: #000;
+        font-weight: bold;
+        color: #890098;
       }
 
       .wallet-address {

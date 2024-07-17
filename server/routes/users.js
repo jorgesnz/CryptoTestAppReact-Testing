@@ -41,10 +41,23 @@ router.post('/', async (req, res) => {
 
         // Crear wallets por defecto (Bitcoin, Ethereum, Solana)
         const wallets = [
-            { cryptocurrency: 'Bitcoin', balance: 0, address: generateWalletAddress() },
-            { cryptocurrency: 'Ethereum', balance: 0, address: generateWalletAddress() },
-            { cryptocurrency: 'Solana', balance: 0, address: generateWalletAddress() }
+            { cryptocurrency: 'btc', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'busd', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'eth', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'xrp', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'sol', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'usdt', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'ada', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'xph', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'matic', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'link', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'doge', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'tezos', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'okb', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'kadena', balance: 0.0000, address: generateWalletAddress() },
+            { cryptocurrency: 'orchid', balance: 0.0000, address: generateWalletAddress() },
         ];
+        
 
         for (const walletData of wallets) {
             const wallet = new Wallet({

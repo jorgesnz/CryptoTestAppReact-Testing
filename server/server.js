@@ -13,6 +13,7 @@ const walletRoute = require('./routes/walletRoutes');
 const notificationRoute = require('./routes/notificationRoutes');
 const crmRoutes = require('./routes/crmRoutes');
 const depositRoute = require('./routes/depositRoutes');
+const transactionInfoRoutes = require('./routes/transactionInfoRoutes');
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use(express.json());
 
 // Configurar CORS
 app.use(cors({
-    origin: '*' // Puedes agregar más orígenes si es necesario
+    origin: '*', // Ajusta esto según tus necesidades de seguridad
 }));
 
 // Rutas
@@ -37,7 +38,8 @@ app.use('/api/transactions', transactionRoute);
 app.use('/api/wallets', walletRoute);
 app.use('/api/notifications', notificationRoute);
 app.use('/api/crm', crmRoutes);
-app.use('/api/deposits', depositRoute); // Asegúrate de que esta línea existe y es correcta
+app.use('/api/deposits', depositRoute);
+app.use('/api/transaction-info', transactionInfoRoutes);
 
 // Configurar el puerto y arrancar el servidor
 const PORT = process.env.PORT || 5000;

@@ -1,46 +1,43 @@
-// client/src/components/AddDepositPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './AddDepositPage.scss';
 
 const AddDepositPage = () => {
-  const { id } = useParams(); // Obtiene el ID del usuario de los parámetros de la ruta
+  const { id } = useParams();
   const [user, setUser] = useState(null);
   const [amount, setAmount] = useState('');
   const [selectedWallet, setSelectedWallet] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user and wallet details from the database
-    axios.get(`http://localhost:5000/api/crm/user/${id}`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/crm/user/${id}`)
       .then(response => setUser(response.data))
       .catch(error => console.error('Error fetching user details:', error));
   }, [id]);
 
   const handleConfirmDeposit = () => {
     if (!selectedWallet || !amount) {
-      alert('Please select a wallet and enter an amount.');
+      alert('Por favor selecciona una Wallet y escribe el monto');
       return;
     }
 
-    // Send deposit data to the database
-    axios.post(`http://localhost:5000/api/crm/user/${id}/deposit`, {
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/api/crm/user/${id}/deposit`, {
       walletId: selectedWallet,
       amount: parseFloat(amount)
     })
     .then(response => {
-      console.log('Deposito Exitoso:', response.data);
-      alert('Deposit successful');
-      navigate(`/crm/user/${id}`); // Redirigir de vuelta a la página de detalles del usuario
+      console.log('Depósito Exitoso:', response.data);
+      alert('Depósito exitoso');
+      navigate(`/crm/user/${id}`);
     })
     .catch(error => {
       console.error('Error processing deposit:', error);
-      alert('Error processing deposit');
+      alert('Error al procesar el depósito');
     });
   };
 
-  if (!user) return <div>Cargando...</div>;
+  if (!user) return <div className="loading">Cargando...</div>;
 
   return (
     <div className="add-deposit-container">
